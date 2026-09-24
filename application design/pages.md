@@ -1,4 +1,4 @@
-Frontend Flow
+# Frontend Flow
 
 The ReactJS application will follow this structure:
 
@@ -34,120 +34,149 @@ React Application
 ```
 
 ---
-Customer / Member Complete Flow
-                    HOME PAGE
-                        │
-                        ↓
-                Login / Register
-                        │
-                        ↓
-                 Search Workspace
-                        │
-                        ↓
-        Filter Location / Type / Capacity
-                  / Price / Amenities
-                        │
-                        ↓
-              Workspace Listing
-                        │
-                        ↓
-             Workspace Details
-                        │
-                        ↓
-              Select Date & Time
-                        │
-                        ↓
-               Check Availability
-                        │
-                  ┌─────┴─────┐
-                  ↓           ↓
-              Available      Booked
-                  │           │
-                  ↓           └──→ Select another slot
-             Booking Details
-                  │
-                  ↓
-             Confirm Booking
-                  │
-                  ↓
-             Booking Created
-                  │
-                  ↓
-          Booking Confirmation
-                  │
-                  ↓
-              My Bookings
-                  │
-             ┌────┴────┐
-             ↓         ↓
-          View       Cancel /
-        Booking     Reschedule
-        
- Workspace Admin Complete Flow
-                  LOGIN
+
+# Customer / Member Complete Flow
+
+```text
+                         HOME PAGE
+                             │
+                             ▼
+                      Login / Register
+                             │
+                             ▼
+                    Search Workspace
+                             │
+                             ▼
+             Filter Location / Type / Capacity
+                    / Price / Amenities
+                             │
+                             ▼
+                   Workspace Listing
+                             │
+                             ▼
+                   Workspace Details
+                             │
+                             ▼
+                    Select Date & Time
+                             │
+                             ▼
+                    Check Availability
+                             │
+                    ┌────────┴────────┐
+                    │                 │
+                    ▼                 ▼
+                Available           Booked
+                    │                 │
+                    ▼                 └──────► Select another slot
+              Booking Details
                     │
-                    ↓
-            ADMIN DASHBOARD
+                    ▼
+               Confirm Booking
                     │
-                    ↓
-             MANAGE HUB
+                    ▼
+               Booking Created
                     │
-          ┌─────────┴─────────┐
-          ↓                   ↓
-     Hub Details          Amenities
-          │
-          ↓
-     Manage Workspaces
-          │
-    ┌─────┼─────┬─────┐
-    ↓     ↓     ↓     ↓
-   Add   Edit  Delete Price
-    │
-    └──────────┬──────────┐
-               ↓          ↓
-          Availability   Slots
-               │
-               ↓
-         View Bookings
-               │
-               ↓
-       Update Booking Status
-       
- Admin Complete Flow
-                 ADMIN LOGIN
-                      │
-                      ↓
-               ADMIN DASHBOARD
-                      │
-       ┌──────────────┼───────────────┐
-       ↓              ↓               ↓
-     Users           Hubs          Workspaces
-       │              │               │
-       ↓              ↓               ↓
-   Manage Users   Manage Hubs    Manage Inventory
-       │
-       └──────────────┬───────────────┘
-                      ↓
-              Workspace Categories
-                      │
-                      ↓
-                 All Bookings
-Final System Architecture
-                    ReactJS Frontend
+                    ▼
+            Booking Confirmation
+                    │
+                    ▼
+                My Bookings
+                    │
+              ┌─────┴─────┐
+              │           │
+              ▼           ▼
+            View       Cancel /
+          Booking     Reschedule
+```
+
+---
+
+# Workspace Admin Complete Flow
+
+```text
+                         LOGIN
                            │
-                           │ REST / JSON
-                           ↓
-                  Spring Boot Backend
+                           ▼
+                   ADMIN DASHBOARD
                            │
-             ┌─────────────┼─────────────┐
-             ↓             ↓             ↓
-        Controllers      Security      Exception
-             │          JWT / RBAC      Handler
-             ↓
-          Services
-             │
-             ↓
-        Repositories
-             │
-             ↓
-        PostgreSQL
+                           ▼
+                      MANAGE HUB
+                           │
+                ┌──────────┴──────────┐
+                │                     │
+                ▼                     ▼
+           Hub Details            Amenities
+                │
+                ▼
+        Manage Workspaces
+                │
+        ┌───────┼───────┬────────┐
+        │       │       │        │
+        ▼       ▼       ▼        ▼
+       Add     Edit    Delete    Price
+        │
+        └──────────────┬──────────────┐
+                       │              │
+                       ▼              ▼
+                 Availability       Slots
+                       │
+                       ▼
+                 View Bookings
+                       │
+                       ▼
+              Update Booking Status
+```
+
+---
+
+# Admin Complete Flow
+
+```text
+                       ADMIN LOGIN
+                            │
+                            ▼
+                     ADMIN DASHBOARD
+                            │
+             ┌──────────────┼──────────────┐
+             │              │              │
+             ▼              ▼              ▼
+           Users           Hubs        Workspaces
+             │              │              │
+             ▼              ▼              ▼
+        Manage Users   Manage Hubs   Manage Inventory
+             │              │              │
+             └──────────────┼──────────────┘
+                            │
+                            ▼
+                  Workspace Categories
+                            │
+                            ▼
+                       All Bookings
+```
+
+---
+
+# Final System Architecture
+
+```text
+                         ReactJS Frontend
+                                │
+                                │ REST / JSON
+                                ▼
+                       Spring Boot Backend
+                                │
+              ┌─────────────────┼─────────────────┐
+              │                 │                 │
+              ▼                 ▼                 ▼
+         Controllers         Security         Exception
+                             JWT / RBAC          Handler
+              │
+              ▼
+           Services
+              │
+              ▼
+         Repositories
+              │
+              ▼
+          PostgreSQL
+```
